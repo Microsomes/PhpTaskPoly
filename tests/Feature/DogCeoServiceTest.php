@@ -29,4 +29,10 @@ class DogCeoServiceTest extends TestCase
         $this->assertContains('affenpinscher', $this->dogCeoService->getAllBreeds());
     }
 
+
+    /** @test */
+    public function it_can_get_specific_breed_with_id(){
+        $this->assertIsString($this->dogCeoService->getImageByBreedId("affenpinscher"));
+    }
+
 }
