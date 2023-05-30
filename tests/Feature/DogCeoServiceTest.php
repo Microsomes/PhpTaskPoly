@@ -42,6 +42,8 @@ class DogCeoServiceTest extends TestCase
         $resp = $this->dogCeoService->getRandomBreed();
         $this->assertIsString($resp);
         $this->assertNotEmpty($resp);
+
     }
+
 
 }

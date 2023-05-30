@@ -24,4 +24,11 @@ class DogCeoService
         return $resp->json()['message'];
     } 
     
+    public function getRandomBreed():string {
+        $breeds = $this->getAllBreeds();
+
+        $randomBreed = $breeds[array_rand($breeds)];
+
+        return $randomBreed;
+    }
 }
