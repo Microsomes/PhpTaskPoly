@@ -41,6 +41,9 @@ class BreedControllerTest extends TestCase
      public function it_gets_breed_from_breed_id(){
         $resp = $this->get('/api/breed/affenpinscher')
             ->assertStatus(200);
+        
+        $this->assertEquals('affenpinscher', $resp->content());
+        
      }
 
      

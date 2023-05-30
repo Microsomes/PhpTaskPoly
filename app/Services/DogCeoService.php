@@ -31,4 +31,15 @@ class DogCeoService
 
         return $randomBreed;
     }
+
+    public function getBreedById(string $breedid){
+        $allBreeds = $this->getAllBreeds();
+
+        if(in_array($breedid, $allBreeds)){
+            return $breedid;
+        } else {
+            return response()->json(['error' => 'Breed not found'], 404);
+        }
+
+    }
 }

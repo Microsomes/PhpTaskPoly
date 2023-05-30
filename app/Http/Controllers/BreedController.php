@@ -23,4 +23,8 @@ class BreedController extends Controller
         return $dogCeoService->getImageByBreedId($breedId);
     }
 
+    public function getBreedById(Request $request, DogCeoService $dogCeoService, string $breedId) {
+        return $dogCeoService->getBreedById($breedId);
+    }
+
 }

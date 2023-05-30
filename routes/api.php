@@ -25,3 +25,5 @@ Route::get('/breed',[BreedController::class, 'index']);
 Route::get('/breed/random',[BreedController::class, 'randomBreed']);
 
 Route::get('/breed/{breedid}/image',[BreedController::class, 'getRandomImageByBreedId']);
+
+Route::get('/breed/{breedid}',[BreedController::class, 'getBreedById']);
