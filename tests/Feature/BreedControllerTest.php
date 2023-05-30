@@ -31,12 +31,17 @@ class BreedControllerTest extends TestCase
      /** @test */
     public function it_gets_random_image_by_breed_id(){
         $breed = "affenpinscher";
-        $resp = $this->get("/api/$breed/image")
+        $resp = $this->get("/api/breed/$breed/image")
             ->assertStatus(200);
 
         $this->assertIsString($resp->content());
      }
 
+     /** @test */
+     public function it_gets_breed_from_breed_id(){
+        $resp = $this->get('/api/breed/affenpinscher')
+            ->assertStatus(200);
+     }
 
      
     

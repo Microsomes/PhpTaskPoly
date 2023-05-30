@@ -19,4 +19,8 @@ class BreedController extends Controller
         return $dogCeoService->getRandomBreed();
     }
 
+    public function getRandomImageByBreedId(Request $request, DogCeoService $dogCeoService, string $breedId) {
+        return $dogCeoService->getImageByBreedId($breedId);
+    }
+
 }
