@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Breed;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class DogCeoService
@@ -14,7 +16,18 @@ class DogCeoService
         $breeds = collect($resp->json()['message'])
             ->map(function (array $vals, string $key){
                 return $key;
-            });
+        });
+
+        
+        foreach($breeds as $breed){
+           
+             Breed::firstOrCreate([
+                'name' => $breed
+            ]);
+
+        }
+        
+        cache()->set('breeds', $breeds, Carbon::now()->addMinutes(5));
 
         return $breeds->toArray();
     }
