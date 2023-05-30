@@ -18,5 +18,10 @@ class DogCeoService
 
         return $breeds->toArray();
     }
+
+    public function getImageByBreedId(string $breedId):string {
+        $resp = Http::get("https://dog.ceo/api/breed/{$breedId}/images/random");
+        return $resp->json()['message'];
+    } 
     
 }
