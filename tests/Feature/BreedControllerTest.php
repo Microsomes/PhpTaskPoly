@@ -14,6 +14,13 @@ class BreedControllerTest extends TestCase
         $this->get('/api/breed')->assertStatus(200);
     }
 
+    /** @test */
+    public function it_returns_all_breeds(){
+        $resp = $this->get('/api/breed')->json();
+
+        $this->assertIsArray($resp);
+    }
+
     
 
 
