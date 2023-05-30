@@ -24,4 +24,9 @@ class DogCeoServiceTest extends TestCase
         $this->assertIsArray($this->dogCeoService->getAllBreeds());
     }
 
+    /** @test */
+    public function it_returns_all_breeds_as_array(){
+        $this->assertContains('affenpinscher', $this->dogCeoService->getAllBreeds());
+    }
+
 }
