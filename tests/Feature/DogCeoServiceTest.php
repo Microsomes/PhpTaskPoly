@@ -32,7 +32,16 @@ class DogCeoServiceTest extends TestCase
 
     /** @test */
     public function it_can_get_specific_breed_with_id(){
-        $this->assertIsString($this->dogCeoService->getImageByBreedId("affenpinscher"));
+        $resp = $this->dogCeoService->getImageByBreedId("affenpinscher");
+        $this->assertIsString($resp);
+        $this->assertNotEmpty($resp);
+    }
+
+    /** @test */
+   public function  it_gets_random_breed(){
+        $resp = $this->dogCeoService->getRandomBreed();
+        $this->assertIsString($resp);
+        $this->assertNotEmpty($resp);
     }
 
 }
