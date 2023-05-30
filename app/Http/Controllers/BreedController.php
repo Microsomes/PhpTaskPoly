@@ -15,4 +15,8 @@ class BreedController extends Controller
         return $dogCeoService->getAllBreeds();    
     }
 
+    public function randomBreed(Request $request, DogCeoService $dogCeoService){
+        return $dogCeoService->getRandomBreed();
+    }
+
 }

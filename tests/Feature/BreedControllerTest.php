@@ -21,6 +21,15 @@ class BreedControllerTest extends TestCase
         $this->assertIsArray($resp);
     }
 
+     /** @test */
+     public function it_can_get_random_breed() {
+        
+        $resp = $this->get('/api/breed/random')->json();
+
+        $this->assertIsString($resp);
+        
+     }
+
     
 
 
