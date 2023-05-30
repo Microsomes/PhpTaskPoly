@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/breed',[BreedController::class, 'index']);
+
+Route::get('/breed/random',[BreedController::class, 'randomBreed']);
