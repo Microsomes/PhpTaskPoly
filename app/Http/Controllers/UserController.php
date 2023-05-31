@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Park;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,17 +12,24 @@ class UserController extends Controller
 
 
         $validData = $request->validate([
-            'park_id' => 'required|exists:parks,id',
-            'park_type' => 'required|string'
+            'model_id' => 'required|exists:parks,id',
+            'model_type' => 'required|string'
         ]);
 
         
-        $parkId = $validData['park_id'];
-        $parkType = $validData['park_type'];
+        $modelId = $validData['model_id'];
+        $parkType = $validData['model_type'];
 
-        $park = $parkType::find($parkId);
+        $model = $parkType::find($modelId);
 
-        $user->park()->attach($park);
+       
+       //check if model is a park
+        if($model instanceof Park){
+            $user->park()->attach($model);
+        }
+
+        
+
 
     }
 }
