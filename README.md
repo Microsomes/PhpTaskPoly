@@ -1,5 +1,7 @@
 
 
+I did not follow naming convention for models/table, for breedable,userable,parkable i avoided the s for all 3 tables, in my head it sounded less confusing.
+
 Code test:
 
 
@@ -42,3 +44,4 @@ all the relationships are setup correctly for querying with graphql such as
 }
 
 ^grabs park 3 with all its associated breeds
+
