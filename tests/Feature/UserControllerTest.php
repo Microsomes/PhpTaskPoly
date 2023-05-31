@@ -44,7 +44,6 @@ class UserControllerTest extends TestCase
 
         $this->assertEquals(1, $user->breed()->count());
         
-
     }
    
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Breed;
 use App\Models\Park;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class UserController extends Controller
 
 
         $validData = $request->validate([
-            'model_id' => 'required|exists:parks,id',
+            'model_id' => 'required|integer',
             'model_type' => 'required|string'
         ]);
 
@@ -20,12 +21,14 @@ class UserController extends Controller
         $modelId = $validData['model_id'];
         $parkType = $validData['model_type'];
 
-        $model = $parkType::find($modelId);
+        $model = $parkType::findOrFail($modelId);
 
        
        //check if model is a park
         if($model instanceof Park){
             $user->park()->attach($model);
+        }else if($model instanceof Breed){
+            $user->breed()->attach($model);
         }
 
         

@@ -51,4 +51,12 @@ class User extends Authenticatable
     {
         return $this->morphToMany(Park::class, 'parkable', 'parkable');
     }
+
+
+    public function breed(): MorphToMany
+    {
+        return $this->morphToMany(Breed::class, 'breedable', 'breedable');
+    }
+    
+
 }
