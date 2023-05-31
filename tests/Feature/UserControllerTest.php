@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+
+    use RefreshDatabase;
    
      /** @test */
      public function it_has_route_to_associate_park_with_user(){
@@ -18,10 +20,12 @@ class UserControllerTest extends TestCase
         $park = Park::factory()->create();
         
         $this->post("/api/{$user->id}/associate",[
-            'park_id' => $park->id
+            'park_id' => $park->id,
+            'park_type' => Park::class
         ])
         ->assertStatus(200);
 
+        $this->assertEquals(1, $user->park()->count());
 
     }
    

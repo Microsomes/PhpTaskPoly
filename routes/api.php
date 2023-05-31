@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BreedController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,6 @@ Route::get('/breed/random',[BreedController::class, 'randomBreed']);
 Route::get('/breed/{breedid}/image',[BreedController::class, 'getRandomImageByBreedId']);
 
 Route::get('/breed/{breedid}',[BreedController::class, 'getBreedById']);
+
+
+Route::post('/{user}/associate',[UserController::class, 'associate']);

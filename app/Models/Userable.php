@@ -12,7 +12,6 @@ class Userable extends Model
 
     protected $table = 'userable';
 
-
     public function userable():MorphTo{
         return $this->morphTo();
     }
