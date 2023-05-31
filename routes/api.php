@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BreedController;
+use App\Http\Controllers\ParkController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::get('/breed/{breedid}',[BreedController::class, 'getBreedById']);
 
 
 Route::post('/{user}/associate',[UserController::class, 'associate']);
+
+Route::post('/park/{park}/breed',[ParkController::class, 'associate']);

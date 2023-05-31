@@ -24,7 +24,7 @@ class UserControllerTest extends TestCase
             'model_id' => $park->id,
             'model_type' => Park::class
         ])
-        ->assertStatus(200);
+        ->assertStatus(201);
 
         $this->assertEquals(1, $user->park()->count());
 
@@ -40,7 +40,7 @@ class UserControllerTest extends TestCase
             'model_id' => $breed->id,
             'model_type' => Breed::class
         ])
-        ->assertStatus(200);
+        ->assertStatus(201);
 
         $this->assertEquals(1, $user->breed()->count());
         

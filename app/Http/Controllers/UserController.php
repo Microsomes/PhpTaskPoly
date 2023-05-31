@@ -23,14 +23,31 @@ class UserController extends Controller
 
         $model = $parkType::findOrFail($modelId);
 
+        $success = false;
+
        
        //check if model is a park
         if($model instanceof Park){
             $user->park()->attach($model);
+            $success = true;
         }else if($model instanceof Breed){
             $user->breed()->attach($model);
+
+            $success = true;
         }
 
+
+
+        if($success){
+            return response()->json([
+                'message' => 'Model associated with user'
+            ], 201);
+        }else{
+            return response()->json([
+                'message' => 'Model not associated with user'
+            ], 400);
+        }
+        
         
 
 

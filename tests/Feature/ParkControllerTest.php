@@ -23,7 +23,9 @@ class ParkControllerTest extends TestCase
             'breed_id' => $breed->id,
             'breed_type' =>  Breed::class
         ])
-        ->assertStatus(200);
+        ->assertStatus(201);
+
+        $this->assertEquals(1, $park->breed()->count());
 
 
     }
