@@ -1,0 +1,62 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"Indicates what fields are available at the top level of a query operation."
+type Query {
+
+    user(id: ID @eq): User @find
+    users: [User!]! @all
+
+    breed(id: ID @eq): Breed @find
+    breeds: [Breed!]! @all
+
+    park(id: ID @eq): Park @find
+    parks: [Park!]! @all
+  
+}
+
+
+type Park {
+    id: ID!
+    name: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+
+    breeds: [Breed!]! @field(resolver: "App\\GraphQL\\Queries\\ParkQuery@breeds")
+}
+
+type Breed {
+    id: ID!
+    name: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+
+"Account of a person who utilizes this application."
+type User {
+    "Unique primary key."
+    id: ID!
+
+    "Non-unique name."
+    name: String!
+
+    "Unique email address."
+    email: String!
+
+    "When the email was verified."
+    email_verified_at: DateTime
+
+    "When the account was created."
+    created_at: DateTime!
+
+    "When the account was last updated."
+    updated_at: DateTime!
+
+    location: String!
+
+    breeds: [Breed!]! @field(resolver: "App\\GraphQL\\Queries\\UserQuery@breeds")
+
+    parks: [Park!]! @field(resolver: "App\\GraphQL\\Queries\\UserQuery@parks")
+
+}
