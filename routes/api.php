@@ -22,15 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/breed',[BreedController::class, 'index']);
+Route::group([ ], function () {
+    Route::get('/breed',[BreedController::class, 'index']);
 
-Route::get('/breed/random',[BreedController::class, 'randomBreed']);
+    Route::get('/breed/random',[BreedController::class, 'randomBreed']);
+    
+    Route::get('/breed/{breedid}/image',[BreedController::class, 'getRandomImageByBreedId']);
+    
+    Route::get('/breed/{breedid}',[BreedController::class, 'getBreedById']);
+    
+    
+    Route::post('/{user}/associate',[UserController::class, 'associate']);
+    
+    Route::post('/park/{park}/breed',[ParkController::class, 'associate']);
+});
 
-Route::get('/breed/{breedid}/image',[BreedController::class, 'getRandomImageByBreedId']);
-
-Route::get('/breed/{breedid}',[BreedController::class, 'getBreedById']);
-
-
-Route::post('/{user}/associate',[UserController::class, 'associate']);
-
-Route::post('/park/{park}/breed',[ParkController::class, 'associate']);

@@ -4,12 +4,19 @@ namespace App\Services;
 
 use App\Models\Breed;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Http;
 
 class DogCeoService
 {
-    public function getAllBreeds(): array
+    public function getAllBreeds()
+
     {
+
+        if (cache()->has('breeds')) {
+            return cache()->get('breeds');
+        }
+
 
         $resp = Http::get('https://dog.ceo/api/breeds/list/all');
 
